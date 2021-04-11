@@ -1,0 +1,5 @@
+# WAS server setting
+server.port=8081
+server.servlet.context-path=/
+ 
+devtools.livereload.enabled=true

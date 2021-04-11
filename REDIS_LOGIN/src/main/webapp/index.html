@@ -1,0 +1,56 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="/resources/css/style.css">
+  <script type="text/javascript" src="/resources/js/jquery-3.6.0.min.js"></script>
+  <title>Sign in</title>
+</head>
+
+<body>
+	<div class="login">
+	  <h1>Login to Web App</h1>
+	    <p><input type="text" name="login" id = "ip_userId" value="" placeholder="ID"></p>
+	    <p><input type="password" name="password" id = "ip_password" value="" placeholder="PASSWORD"></p>
+	    <p class="remember_me">
+	    </p>
+	    <p class="submit"><button class="btn" id="btn_login">로그인</button></p>
+	  </form>
+	</div>
+	
+	<div class="login-help">
+	  <p>Forgot your password? <a href="#">Click here to reset it</a>.</p>
+	</div>
+</body>
+
+
+<script type="text/javascript">
+$( document ).ready(function() {
+    $("#btn_login").on("click",login);
+});
+
+var login = function(){
+	var param = {};
+	
+	param.id = $("#ip_userId").val();
+	param.password = $("#ip_password").val()
+	
+	$.ajax({
+		url: "/sample/login",
+		type: "POST",
+		contentType : 'application/json;charset=UTF-8',
+		data: JSON.stringify(param),
+		success: function(res){
+			alert(res.resultMessage);
+		},
+		error: function (res){
+			console.log(res);
+		}
+	});
+}
+</script>
+
+
+
+</html>
+

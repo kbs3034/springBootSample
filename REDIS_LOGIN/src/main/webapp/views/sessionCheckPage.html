@@ -1,0 +1,50 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="/resources/css/style.css">
+  <script type="text/javascript" src="/resources/js/jquery-3.6.0.min.js"></script>
+  <title>Sign in</title>
+</head>
+
+<body>
+	<div class="login">
+	  <h1>세션정보 가져오기</h1>
+	    <p><input type="text" name="userId" id = "ip_userId" value="" ></p>
+	    <p><input type="text" name="userName" id = "ip_userName" value="" ></p>
+	    <p><input type="text" name="nickName" id = "ip_nickName" value="" ></p>
+	    <p><input type="text" name="password" id = "ip_custNo" value="" ></p>
+	    <p class="submit"><button class="btn" id="btn_sessionChk">세션정보가져오기</button></p>
+	</div>
+</body>
+
+
+<script type="text/javascript">
+$( document ).ready(function() {
+    $("#btn_sessionChk").on("click",sessionChk);
+});
+
+var sessionChk = function(){
+	
+	$.ajax({
+		url: "/sample/sessionChk",
+		type: "POST",
+		contentType : 'application/json;charset=UTF-8',
+		success: function(res){
+			var sessionObject = res.sessionObject;
+			$("#ip_userId").val(sessionObject.userId)
+			$("#ip_userName").val(sessionObject.userName)
+			$("#ip_nickName").val(sessionObject.nickName)
+			$("#ip_custNo").val(sessionObject.custNo)
+		},
+		error: function (res){
+			console.log(res);
+		}
+	});
+}
+</script>
+
+
+
+</html>
+
