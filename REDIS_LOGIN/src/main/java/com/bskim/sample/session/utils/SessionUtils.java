@@ -21,7 +21,7 @@ public class SessionUtils {
 	public void creatSession(SessionObject sessionObject) {
 		HttpServletRequest request = getRequest();
 		
-		//·Î±×ÀÎµÇ¾îÀÖÀ»¶§ ±âÁ¸ ¼¼¼Ç Á¦°Å
+		//ë¡œê·¸ì¸ë˜ì–´ìˆì„ë•Œ ê¸°ì¡´ ì„¸ì…˜ ì œê±°
 		if(isLogin()) request.getSession().invalidate();
 		
 		HttpSession session = request.getSession();

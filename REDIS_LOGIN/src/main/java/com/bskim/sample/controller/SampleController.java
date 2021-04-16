@@ -31,13 +31,13 @@ public class SampleController {
 		String id = param.get("id");
 		String password = param.get("password");
 		
-		//·Î±×ÀÎ Á¤ÇÕ¼º ·ÎÁ÷(DB¼³Ä¡Àü ÀÓ½Ã test)
+		//ë¡œê·¸ì¸ ì •í•©ì„± ë¡œì§(DBì„¤ì¹˜ì „ ì„ì‹œ test)
 		if("test".equals(id) && "test".equals(password)) {
 			SessionObject sessionObject = new SessionObject();
 			sessionObject.setCustNo("123456789");
-			sessionObject.setNickName("´Ğ³×ÀÓ");
+			sessionObject.setNickName("ë‹‰ë„¤ì„");
 			sessionObject.setUserId(id);
-			sessionObject.setUserName("ÀÌ¸§");
+			sessionObject.setUserName("ì´ë¦„");
 			
 			sessionUtils.creatSession(sessionObject);
 			result.put("resultMessage", "success");
