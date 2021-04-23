@@ -1,4 +1,4 @@
-package com.bskim.sample.session.utils;
+package com.bskim.common.session;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import com.bskim.sample.session.SessionObject;
 @Component
 public class SessionUtils {
 	

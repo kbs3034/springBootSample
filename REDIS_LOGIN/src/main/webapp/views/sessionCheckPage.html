@@ -27,11 +27,12 @@ $( document ).ready(function() {
 var sessionChk = function(){
 	
 	$.ajax({
-		url: "/sample/sessionChk",
+		url: "/USRLGI00102R.t",
 		type: "POST",
+		data: JSON.stringify({}),
 		contentType : 'application/json;charset=UTF-8',
 		success: function(res){
-			var sessionObject = res.sessionObject;
+			var sessionObject = res.data;
 			$("#ip_userId").val(sessionObject.userId)
 			$("#ip_userName").val(sessionObject.userName)
 			$("#ip_nickName").val(sessionObject.nickName)

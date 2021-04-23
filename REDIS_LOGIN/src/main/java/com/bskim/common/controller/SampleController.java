@@ -1,4 +1,4 @@
-package com.bskim.sample.controller;
+package com.bskim.common.controller;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,16 +9,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bskim.sample.session.SessionObject;
-import com.bskim.sample.session.utils.SessionUtils;
-
-import oracle.jdbc.proxy.annotation.Methods;
+import com.bskim.common.session.SessionObject;
+import com.bskim.common.session.SessionUtils;
 
 @RestController
 @RequestMapping("/sample")
 public class SampleController {
 	
 	public SessionUtils sessionUtils;
+	
 	@Autowired
 	public SampleController(SessionUtils sessionUtils) {
 		this.sessionUtils = sessionUtils;

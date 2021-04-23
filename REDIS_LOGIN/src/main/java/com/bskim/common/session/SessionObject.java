@@ -1,4 +1,4 @@
-package com.bskim.sample.session;
+package com.bskim.common.session;
 
 import java.io.Serializable;
 
@@ -34,7 +34,5 @@ public class SessionObject implements Serializable {
 	public void setCustNo(String custNo) {
 		this.custNo = custNo;
 	}
-	
-	
 	
 }

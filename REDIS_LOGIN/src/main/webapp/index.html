@@ -32,11 +32,11 @@ $( document ).ready(function() {
 var login = function(){
 	var param = {};
 	
-	param.id = $("#ip_userId").val();
+	param.userId = $("#ip_userId").val();
 	param.password = $("#ip_password").val()
 	
 	$.ajax({
-		url: "/sample/login",
+		url: "/USRLGI00101R.t",
 		type: "POST",
 		contentType : 'application/json;charset=UTF-8',
 		data: JSON.stringify(param),
