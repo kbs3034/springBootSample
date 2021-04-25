@@ -27,7 +27,7 @@ public class IServiceUtils {
 	@Value("${project.basePackage}")
 	String basePackage;
 	
-	public Object ServiceCall(Map<String,Object> param,String tranId) throws IllegalAccessException, InstantiationException {
+	public Object ServiceCall(Map<String,Object> param,String tranId) throws Throwable {
 		Object result = null;
 		
 		String bussinessDvCode = tranId.substring(0, 3).toLowerCase();
@@ -42,7 +42,6 @@ public class IServiceUtils {
 		sb.append(serviceId);
 		
 		Method[] methods;
-		
 		try {
 			seviceObj = BeanUtils.getBean(Class.forName(sb.toString())); 
 			
@@ -70,9 +69,12 @@ public class IServiceUtils {
 				} catch (IllegalArgumentException e) {
 					e.printStackTrace();
 					throw new IllegalArgumentException("해당 거래의 파라미터가 잘못 설정 되었습니다 확인후 다시 시도하십시오.");
-				} catch (InvocationTargetException | IllegalAccessException e) {
+				} catch (IllegalAccessException e) {
 					e.printStackTrace();
 					throw new IllegalAccessException("해당 거래 아이디를 찾을 수 없습니다. 거래 아이디 명명규칙 등을 확인하여 서비스 아이디 등록후 다시 시도하십시오.");
+				} catch (InvocationTargetException e) {
+					e.printStackTrace();
+					throw e.getCause();
 				}
 			}else {
 				throw new IllegalAccessException("해당 거래 아이디를 찾을 수 없습니다. 거래 아이디 명명규칙 등을 확인하여 서비스 아이디 등록후 다시 시도하십시오.");

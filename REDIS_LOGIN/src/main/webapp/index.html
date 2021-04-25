@@ -44,7 +44,8 @@ var login = function(){
 			alert(res.resultMessage);
 		},
 		error: function (res){
-			console.log(res);
+			console.log(res.responseJSON);
+			alert(res.responseJSON.resultMessage);
 		}
 	});
 }

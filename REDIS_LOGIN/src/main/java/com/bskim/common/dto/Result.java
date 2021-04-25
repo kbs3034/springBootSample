@@ -2,13 +2,21 @@ package com.bskim.common.dto;
 
 import java.util.Map;
 
+import org.springframework.http.HttpStatus;
+
 public class Result {
-	private String userId;
 	private String resultMessage;
-	private String statusCode;
+	private HttpStatus statusCode;
 	
 	private Map<String,Object> data;
-
+	
+	public Result() {};
+	public Result(HttpStatus statusCode, String resultMessage, Map<String,Object> data) {
+		this.statusCode = statusCode;
+		this.resultMessage = resultMessage;
+		this.data = data;
+	}
+	
 	public String getResultMessage() {
 		return resultMessage;
 	}
@@ -17,19 +25,11 @@ public class Result {
 		this.resultMessage = resultMessage;
 	}
 
-	public String getStatusCode() {
+	public HttpStatus getStatusCode() {
 		return statusCode;
 	}
 
-	public String getUserId() {
-		return userId;
-	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-
-	public void setStatusCode(String statusCode) {
+	public void setStatusCode(HttpStatus statusCode) {
 		this.statusCode = statusCode;
 	}
 

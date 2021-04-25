@@ -4,34 +4,38 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bskim.co.usr.common.dto.User;
+import com.bskim.co.usr.lgi.dao.LoginDao;
 import com.bskim.common.annotaion.TranID;
+import com.bskim.common.exception.BizException;
 import com.bskim.common.session.SessionObject;
 import com.bskim.common.session.SessionUtils;
 import com.bskim.common.utils.IObjectUtils;
 
 @Service
 public class USRLGI001 {
-	
+	@Autowired
 	private SessionUtils sessionUtils;
 	@Autowired
-	public USRLGI001(SessionUtils sessionUtils) {
-		this.sessionUtils = sessionUtils;
-	}
+	private LoginDao LoginDao;
+	
 	
 	@TranID("USRLGI00101R")
-	public User login (User user) {
-		User result = new User(); 
+	public User login (User user) throws BizException {
+		User result = LoginDao.selectUserInfo(user);
 		
-		if("test".equals(user.getUserId())) {
+		if(result != null) {
 			SessionObject sessionObject = new SessionObject();
-			sessionObject.setCustNo("123456789");
-			sessionObject.setNickName("닉네임");
-			sessionObject.setUserId(user.getUserId());
-			sessionObject.setUserName("이름");
+			
+			sessionObject.setCustNo(result.getCustNo());
+			sessionObject.setNickName(result.getNickName());
+			sessionObject.setUserId(result.getUserId());
+			sessionObject.setUserName(result.getUserName());
 			
 			sessionUtils.creatSession(sessionObject);
 			
 			result = (User) IObjectUtils.convertObjectToObject(sessionObject, User.class);
+		}else {
+			throw new BizException("로그인실패");
 		}
 		
 		return result; 

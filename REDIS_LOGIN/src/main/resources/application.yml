@@ -12,6 +12,11 @@ spring:
   redis:
     host: 192.168.56.101
     port: 6379
+  datasource: 
+    driver-class-name: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1521:orcl
+    username: "c##admin"
+    password: admin
     
 project:  
   basePackage:  com.bskim.co

@@ -6,6 +6,7 @@ public class User {
 	private String userName;
 	private String nickName;
 	private String custNo;
+	private String password;
 	
 	public String getUserId() {
 		return userId;
@@ -30,5 +31,11 @@ public class User {
 	}
 	public void setCustNo(String custNo) {
 		this.custNo = custNo;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 }
